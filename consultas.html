@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="Bootstrap/css/style.css">
+        <title>Veterinaria</title>
+    </head>
+
+    <body>
+
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="index.html">Veterinaria UCA</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">registro
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="consultas.html">consulta</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" placeholder="Search" aria-label="Search" type="text">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+
+        <main role="main">
+
+            <!-- Main jumbotron for a primary marketing message or call to action -->
+            <div class="jumbotron">
+                <div class="container">
+                    <h1 class="display-3">Hello, world!</h1>
+                    <p>This is a template for a simple marketing or informational website. It includes a large callout called
+                        a jumbotron and three supporting pieces of content. Use it as a starting point to create something
+                        more unique.</p>
+                    <p>
+                        <a id="action" class="btn btn-primary btn-lg" href="#" role="button">Llenar formulario formulario »</a>
+                    
+
+                    </p>
+                </div>
+            </div>
+
+            <div class="container">
+                <!-- Example row of columns -->
+                <div class="row">
+                    <form>
+                        <div class="form-group">
+                            <label>Nombre de la mascota:</label>
+                            <input class="form-control" type="text" id="nombreM" name="nombreM" placeholder="pelusa xd" required onkeypress="return soloLetras(event);" onKeyUp="this.value = this.value.toUpperCase();">
+                            <label>sexo:</label>
+                            <input class="form-control" type="text" id="sexo" name="sexo" placeholder="femenino o masculino" required onkeypress="return soloLetras(event);" onKeyUp="this.value = this.value.toUpperCase();">
+                            <label>edad:</label>
+                            <input class="form-control" type="text" id="edad" name="edad" placeholder="100" required onKeyPress="return SoloNumeros(event);"/>
+                            <label>peso:</label>
+                            <input class="form-control" type="text" id="peso" name="peso" placeholder="150 lb" required onKeyPress="return SoloNumeros(event);"/><br>
+
+                            <input type="button" class="form-control" id="boton" value="enviar Formulario de atencion"/>
+                        </div>
+                    </form>
+                </div>
+
+                <hr>
+
+            </div>
+
+        </main>
+
+        <footer class="container">
+            <p>© Ralph Alejandro Castellon Laguna
+                </footer>
+                <script src="js/js.js"></script>
+                <script src="js/jquery-3.2.1.min.js"></script>
+                <script>
+                    $(document).ready(function () {
+                        $(".row").hide();
+                        $("#action").click(function(){
+                            $(".row").fadeIn(2000)
+                        });
+
+                        $("#boton").click(function(){
+                            var nombre = $("#nombreM").val();
+                            var sexo = $("#sexo").val();
+                            var edad = $("#edad").val();
+                            var peso = $("#peso").val();
+                            
+                            $(".row").html("<p>El Nombre de la mascota es:  </p><br/>"+nombre+"<p>El sexo de la mascota es:  </p>"+sexo);
+
+                        });
+
+                        });
+                </script>
+    </body>
+
+    </html>
