@@ -7,6 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="Bootstrap/css/style.css">
+        <link rel="stylesheet" href="css/css.css">
         <title>Veterinaria</title>
     </head>
 
@@ -31,7 +32,7 @@
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" placeholder="Search" aria-label="Search" type="text">
+                    <input class="form-control mr-sm-2" placeholder="En construccion" aria-label="Search" type="text">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </div>
@@ -45,7 +46,7 @@
                     <h1 class="display-3">Registrar Mascota!</h1>
                     <p>Este es un formulario para registrar una mascota y que pueda ser atendida.</p>
                     <p>
-                        <a id="action" class="btn btn-primary btn-lg" href="#" role="button">Llenar formulario formulario »</a>
+                        <a id="action" class="btn btn-primary btn-lg" href="#" role="button">Llenar formulario»</a>
                     
 
                     </p>
@@ -56,17 +57,23 @@
                 <!-- Example row of columns -->
                 <div class="row">
                     <form>
-                        <div class="form-group">
+                        <div class="contenedor">
                             <label>Nombre de la mascota:</label>
-                            <input class="form-control" type="text" id="nombreM" name="nombreM" placeholder="pelusa xd" required onkeypress="return soloLetras(event);" onKeyUp="this.value = this.value.toUpperCase();">
+                            <input class="campo" type="text" id="nombreM" name="nombreM" placeholder="pelusa xd" required onkeypress="return soloLetras(event);">
+                            <br>
                             <label>sexo:</label>
-                            <input class="form-control" type="text" id="sexo" name="sexo" placeholder="femenino o masculino" required onkeypress="return soloLetras(event);" onKeyUp="this.value = this.value.toUpperCase();">
+                            <label>
+                                <input type="radio" class="sexo" name="sex" value="Femenino"/>femenino
+                                <input type="radio" class="sexo" name="sex" value="Masculino"/>Masculino
+                            </label>
+                            <br>
                             <label>edad:</label>
-                            <input class="form-control" type="text" id="edad" name="edad" placeholder="100" required onKeyPress="return SoloNumeros(event);"/>
+                            <input class="campo"  type="text" id="edad" name="edad" placeholder="100" required onKeyPress="return SoloNumeros(event);"/>
+                            <br>
                             <label>peso:</label>
-                            <input class="form-control" type="text" id="peso" name="peso" placeholder="150 lb" required onKeyPress="return SoloNumeros(event);"/><br>
+                            <input class="campo"  type="text" id="peso" name="peso" placeholder="150 lb" required onKeyPress="return SoloNumeros(event);"/><br>
 
-                            <input type="button" class="form-control" id="boton" value="enviar Formulario de atencion"/>
+                            <input type="button" class="boton" id="boton" value="enviar"/>
                         </div>
                     </form>
                 </div>
@@ -78,11 +85,11 @@
                 <!-- Example row of columns -->
                 <div class="row2">
                     <form>
-                        <div class="form-group">
-                            <label>Nombre de la mascota:</label><input class="form-control" type="text" class="no" name="M"><br/>
-                            <label>sexo:</label><input class="form-control" type="text" id="M" name="M"><br/>
-                            <label>edad:</label><input class="form-control" type="text" id="M" name="M"><br/>
-                            <label>peso:</label><input class="form-control" type="text" id="M" name="M"><br/>
+                        <div class="contenedor">
+                            <label>Nombres:</label><input class="campo" type="text" id="name" name="M"><br/>
+                            <label>sexo:</label><input class="campo" type="text" id="sex" name="M"><br/>
+                            <label>edad:</label><input class="campo" type="text" id="age" name="M"><br/>
+                            <label>peso:</label><input class="campo" type="text" id="weight" name="M"><br/>
                         </div>
                     </form>
                 </div>
@@ -108,17 +115,23 @@
 
                         $("#boton").click(function(){
                             var nombre = $("#nombreM").val();
-                            var sexo = $("#sexo").val();
                             var edad = $("#edad").val();
                             var peso = $("#peso").val();
+                           
                              $(".row").hide();
                             $(".row2").fadeIn(2000)
                             $(".row2").find('input').attr('disabled','disabled');
-                            $(".no").html(nombre);
+                             $("#name").val(nombre);    
                             
+                             $("#age").val(edad+" años");
+                            $("#weight").val(peso+" Lb");
                         });
+                            $( "input[type=radio]" ).click( function(){
+                                 var sexo = $( "input[type=radio]:checked" ).val();
+                                $( "#sex" ).val(sexo);
+                         });
+                        
                         });
                 </script>
     </body>
-
     </html>

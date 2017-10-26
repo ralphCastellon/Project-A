@@ -31,6 +31,7 @@ function SoloNumeros(evt){
   return true;
  }
  else{
+     alert('Tecla no aceptada no se quiebraxd');
   return false;
  }
 }

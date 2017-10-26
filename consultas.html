@@ -7,6 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="Bootstrap/css/style.css">
+        <link rel="stylesheet" href="css/css.css">
         <title>Veterinaria</title>
     </head>
 
@@ -22,7 +23,7 @@
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">registro
+                        <a class="nav-link" href="formulario_registro_animal.html">registro
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
@@ -31,7 +32,7 @@
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" placeholder="Search" aria-label="Search" type="text">
+                    <input class="form-control mr-sm-2" placeholder="En construccion" aria-label="Search" type="text">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </div>
@@ -42,12 +43,10 @@
             <!-- Main jumbotron for a primary marketing message or call to action -->
             <div class="jumbotron">
                 <div class="container">
-                    <h1 class="display-3">Hello, world!</h1>
-                    <p>This is a template for a simple marketing or informational website. It includes a large callout called
-                        a jumbotron and three supporting pieces of content. Use it as a starting point to create something
-                        more unique.</p>
+                    <h1 class="display-3">Consulta!</h1>
+                    <p>Consultando</p>
                     <p>
-                        <a id="action" class="btn btn-primary btn-lg" href="#" role="button">Llenar formulario formulario »</a>
+                        <a id="action" class="btn btn-primary btn-lg" href="#" role="button">Llenar formulario Consulta»</a>
                     
 
                     </p>
@@ -58,17 +57,15 @@
                 <!-- Example row of columns -->
                 <div class="row">
                     <form>
-                        <div class="form-group">
-                            <label>Nombre de la mascota:</label>
-                            <input class="form-control" type="text" id="nombreM" name="nombreM" placeholder="pelusa xd" required onkeypress="return soloLetras(event);" onKeyUp="this.value = this.value.toUpperCase();">
-                            <label>sexo:</label>
-                            <input class="form-control" type="text" id="sexo" name="sexo" placeholder="femenino o masculino" required onkeypress="return soloLetras(event);" onKeyUp="this.value = this.value.toUpperCase();">
-                            <label>edad:</label>
-                            <input class="form-control" type="text" id="edad" name="edad" placeholder="100" required onKeyPress="return SoloNumeros(event);"/>
-                            <label>peso:</label>
-                            <input class="form-control" type="text" id="peso" name="peso" placeholder="150 lb" required onKeyPress="return SoloNumeros(event);"/><br>
-
-                            <input type="button" class="form-control" id="boton" value="enviar Formulario de atencion"/>
+                        <div class="contenedor">
+                            <label>Ingrese su Nombre:</label>
+                            <input class="campo"type="text" id="nombres" name="nombre" placeholder="Freddy xd" required onkeypress="return soloLetras(event);">
+                            <label>
+                                <input type="checkbox" name="subscribe" id="subscribe">
+                                Me gustaría recibir la consulta vía correo-e.
+                            </label>
+                            <input class="campo" type="text" id="correos" name="correo" placeholder="anonimo@gmail.com">
+                            <input type="button" class="boton" id="boton" value="enviar Formulario de atencion"/>
                         </div>
                     </form>
                 </div>
@@ -78,6 +75,15 @@
             </div>
 
         </main>
+         <div class="row2">
+                    <form>
+                        <div class="contenedor">
+                            <label>Nombre:</label><input class="campo" type="text" id="name" name="M"><br/>
+                            <label>Correo:</label><input class="campo" type="text" id="correo" name="M"><br/>
+                            <label>Cita:</label><input class="campo" type="text" id="cita" name="M"><br/>
+                        </div>
+                    </form>
+                </div>
 
         <footer class="container">
             <p>© Ralph Alejandro Castellon Laguna
@@ -87,22 +93,37 @@
                 <script>
                     $(document).ready(function () {
                         $(".row").hide();
+                        $(".row2").hide();
+                        $("#correos").hide();
                         $("#action").click(function(){
                             $(".row").fadeIn(2000)
                         });
 
                         $("#boton").click(function(){
-                            var nombre = $("#nombreM").val();
-                            var sexo = $("#sexo").val();
-                            var edad = $("#edad").val();
-                            var peso = $("#peso").val();
+                            var nombre = $("#nombres").val();
+                            var correo = $("#correos").val(); 
+                            if($("#correos").val().indexOf('@', 0) == -1 || $("#correos").val().indexOf('.', 0) == -1) {
+                                alert('El correo electrónico introducido no es correcto.');
+                                return false;
+                            }
+                            $(".row").hide();
+                            $(".row2").fadeIn(2000)
+                            $(".row2").find('input').attr('disabled','disabled');
+                             $("#name").val(nombre);  
+                             $("#correo").val(correo); 
+                             $("#cita").val("Su cita sera mañana");  
                             
-                            $(".row").html("<p>El Nombre de la mascota es:  </p><br/>"+nombre+"<p>El sexo de la mascota es:  </p>"+sexo);
-
                         });
-
+                        $(document).ready(function(){
+                          $('#subscribe').on('change',function(){
+                            if (this.checked) {
+                             $("#correos").show();
+                            } else {
+                             $("#correos").hide();
+                            }  
+                          })
+                        });
                         });
                 </script>
     </body>
-
-    </html>
+</html>
